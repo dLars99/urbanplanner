@@ -7,14 +7,17 @@ namespace Planner
     {
         static void Main(string[] args)
         {
-            List<Building> allBuildings = new List<Building>();
+            // Build this city
+            City Splendor = new City("City of Splendor");
+            Splendor.electMayor("McCheese");
+
             Building SignatureTower = new Building("501 Church Street");
             SignatureTower.Width = 2500;
             SignatureTower.Depth = 1500;
             SignatureTower.Stories = 87;
             SignatureTower.Construct();
             SignatureTower.Purchase("Giarratano");
-            allBuildings.Add(SignatureTower);
+            Splendor.addBuilding(SignatureTower);
 
             Building MinasTirith = new Building("1234 Gondor Street");
             MinasTirith.Width = 450;
@@ -22,7 +25,7 @@ namespace Planner
             MinasTirith.Stories = 64;
             MinasTirith.Construct();
             MinasTirith.Purchase("Saruman");
-            allBuildings.Add(MinasTirith);
+            Splendor.addBuilding(MinasTirith);
 
             Building SplitLevel = new Building("1234 Street Place");
             SplitLevel.Width = 785;
@@ -30,11 +33,15 @@ namespace Planner
             SplitLevel.Stories = 2;
             SplitLevel.Construct();
             SplitLevel.Purchase("Jim Bob Bonet");
-            allBuildings.Add(SplitLevel);
+            Splendor.addBuilding(SplitLevel);
 
-            SignatureTower.DisplayInformation();
-            MinasTirith.DisplayInformation();
-            SplitLevel.DisplayInformation();
+            Splendor.Greeting();
+
+            foreach (Building building in Splendor.allBuildings)
+            {
+                building.DisplayInformation();
+                Console.WriteLine();
+            }
 
         }
     }
